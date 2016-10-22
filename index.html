@@ -1,0 +1,116 @@
+<html ng-app="myApp">
+    <head>
+
+      <link rel="stylesheet" type="text/css" href="style.css">           
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      <script src="https://use.fontawesome.com/c915161aa3.js"></script>
+      
+    
+    </head>
+<body data-ng-controller="POSController">
+
+  <div class="container" > <!--container-->
+    <div class="row">
+        
+      <div class="box col-md-12">
+         
+        <div class="jumbotron" style="background-color: transparent;">
+            <h1 class="display-4">South Cafe..<i class="fa fa-smile-o"></i></h1>
+          <h2><span class="text-warning">Come Find Some India Food Ready <i class="fa fa-cutlery"></i> 
+          <span class="pull-right">And Chai is Here...<i class="fa fa-coffee"></i></span></span></h2>
+          <span class="pull-right text-muted">{{date | date:'MMM-dd-yyyy'}}</span>
+          <div class="text-muted">Irving TX, USA </div>
+      
+        </div></div>
+
+    </div>
+    
+    <div class="row">
+      <div class=" col-sm-12">
+        <div class="box" style="background-color: transparent;">
+            <div class="text-info">South Indian Breakfast</div>
+              <p>Add to Cart</p>
+
+            <hr>
+              <img ng-src="images/idly.jpg" ng-click="add(food.idly)">         
+              <img ng-src="images/vada.jpg" ng-click="add(food.vada)">
+              <img ng-src="images/dosa.jpg" ng-click="add(food.dosa)">
+              <img ng-src="images/ponganalu.jpg" ng-click="add(food.ponganalu)">
+              <img ng-src="images/bonda.jpg" ng-click="add(food.bonda)">
+              <img ng-src="images/upma.jpg" ng-click="add(food.upma)">
+              <img ng-src="images/uthappam.jpg" ng-click="add(food.uthappam)">
+              <img ng-src="images/combo.jpg" ng-click="add(food.combo)">
+              <img ng-src="images/combo1.jpg" ng-click="add(food.combo1)">
+
+          </div>           
+          <br>
+
+          <div class="box">
+            <div class="text-info">Bewerages</div>
+            <p>Add to Cart</p>
+              <hr>
+                        
+            <img ng-src="images/tea.jpg"  ng-click="add(food.tea)">
+            <img ng-src="images/chai.jpg"  ng-click="add(food.chai)">
+            <img ng-src="images/hotcoffee.png"  ng-click="add(food.hotcoffee)">
+<!--             <img ng-src="images/coke.png" ng-click="add(food.coke)">
+            <img ng-src="images/sprite.png" ng-click="add(food.sprite)">
+            <img ng-src="images/pepsi.jpg" ng-click="add(food.pepsi)"> -->
+            <img ng-src="images/coldcoffee.jpg" ng-click="add(food.coldcoffee)">
+            <img ng-src="images/orange.jpg" ng-click="add(food.orange)">
+            <img ng-src="images/strawberry.jpg" ng-click="add(food.strawberry)">
+          </div>
+          
+        </div>
+      </div>
+      
+      <div class="box col-sm-12" style="background-color: transparent;>
+        <div class="well" style="background-color: transparent;>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Order Details</h3>
+            </div>
+            <div class="panel-body" style="max-height:320px; overflow:auto;">
+              <div class="text-warning" ng-hide="order.length">
+                Please Select Your Order !
+              </div>
+              <ul class="list-group">
+                <li class="list-group-item" ng-repeat = "item in order">
+                  <div class="label label-success" >${{item.item.price}}</div>
+                   {{item.item.detail}}
+                  
+                  <button class="btn btn-danger btn-xs pull-right" ng-click="deleteItem($index)">
+                    <span class="glyphicon glyphicon-trash"></span>
+                  </button>
+                </li>
+              </ul>
+
+            </div>
+
+            <div class="panel-footer" ng-show="order.length"  >
+              <div class="label label-danger">Total: ${{getSum()}}</div>
+            </div>
+
+            <div class="panel-footer" ng-show="order.length">
+              <div class="text-muted">
+               Click Checkout For The Order
+              </div>
+            </div>
+
+            <div class="pull-right">
+              <span class="btn btn-primary" ng-click="clearOrder()" ng-disabled="!order.length">Clear</span>
+              <span class="btn btn-danger" ng-click="checkout()" ng-disabled="!order.length">Checkout</span>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
